@@ -1,5 +1,3 @@
-# Repositorio raíz - Reglas consolidadas
-
 # Secretos en raíz
 .env
 .env.*
@@ -14,75 +12,73 @@
 .DS_Store
 Thumbs.db
 
-# Python/Django dentro de la carpeta del proyecto "luis"
-luis/**/__pycache__/
-luis/**/*.py[cod]
-luis/**/*$py.class
-
-# C extensions
-luis/**/*.so
-luis/**/*.pyd
+# Archivos Python globales
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.log
 
 # Distribución / empaquetado
-luis/.Python
-luis/build/
-luis/develop-eggs/
-luis/dist/
-luis/downloads/
-luis/eggs/
-luis/.eggs/
-luis/parts/
-luis/sdist/
-luis/var/
-luis/wheels/
-luis/share/python-wheels/
-luis/*.egg-info/
-luis/.installed.cfg
-luis/*.egg
-luis/MANIFEST
+*.egg-info/
+dist/
+build/
+.eggs/
+downloads/
+sdist/
+var/
+wheels/
+share/python-wheels/
+.installed.cfg
+MANIFEST
 
 # PyInstaller
-luis/**/*.manifest
-luis/**/*.spec
+*.manifest
+*.spec
 
 # Logs / coverage / tests cache
-luis/**/*.log
-luis/htmlcov/
-luis/.tox/
-luis/.nox/
-luis/.coverage
-luis/.coverage.*
-luis/.cache
-luis/nosetests.xml
-luis/coverage.xml
-luis/*.cover
-luis/*.py,cover
-luis/.hypothesis/
-luis/.pytest_cache/
-luis/cover/
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
 
 # Traducciones
-luis/**/*.mo
-luis/**/*.pot
+*.mo
+*.pot
 
 # Django artefactos
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+local_settings.py
+
+# Variables de entorno / secretos
+.env
+.env.*
+!.env.example
+
+# Entornos virtuales (raíz o subcarpetas)
+.venv/
+venv/
+luis/venv/
+ENV/
+env/
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+# Proyecto luis específico
 luis/db.sqlite3
 luis/db.sqlite3-journal
-luis/media/
-luis/staticfiles/
-luis/local_settings.py
-
-# Variables de entorno / secretos dentro de luis (si existieran)
-luis/.env
-luis/.env.*
-!luis/.env.example
-
-# Entornos virtuales locales dentro de luis
-luis/.venv/
-luis/venv/
-luis/ENV/
-luis/env/
-luis/Include/
-luis/Lib/
-luis/Scripts/
-luis/pyvenv.cfg
