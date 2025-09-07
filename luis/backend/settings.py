@@ -70,19 +70,17 @@ DATABASES = {
     }
 }
 
-# PostgreSQL configuration (commented out due to encoding issues)
-# DATABASES = {
-#     "default": {
-#         "ENGINE":"django.db.backends.postgresql",
-#         "NAME": os.getenv("DB_NAME","turismo"),
-#         "USER": os.getenv("DB_USER","postgres"),
-#         "PASSWORD": os.getenv("DB_PASSWORD","postgres"),
-#         "HOST": os.getenv("DB_HOST","127.0.0.1"),
-#         "PORT": os.getenv("DB_PORT","5432"),
-#     }
-# }
 
 STATIC_URL = "static/"
+
+# Configuración de email para Gmail
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 from datetime import timedelta
 SIMPLE_JWT = {
