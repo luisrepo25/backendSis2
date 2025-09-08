@@ -1,0 +1,43 @@
+databases:
+  - name: appdb
+    plan: free
+    databaseName: appdb
+    user: appuser
+
+services:
+  - type: web
+    name: django-api
+    plan: free
+    runtime: python
+    rootDirectory: luis
+    buildCommand: "pip install -r ../requirements.txt && python manage.py collectstatic --no-input"
+    startCommand: "python manage.py migrate && gunicorn backend.asgi:application -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: appdb
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "0"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://*.onrender.com"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "https://tusitio.netlify.app,https://tuapp.vercel.app"
+      - key: EMAIL_HOST
+        value: "smtp.gmail.com"
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_USE_TLS
+        value: "True"
+      - key: EMAIL_HOST_USER
+        value: "tu_correo@gmail.com"
+      - key: EMAIL_HOST_PASSWORD
+        value: "APP_PASSWORD_DE_GMAIL"
+      - key: ACCESS_TOKEN_LIFETIME_MIN
+        value: "60"
+      - key: REFRESH_TOKEN_LIFETIME_DAYS
+        value: "7"

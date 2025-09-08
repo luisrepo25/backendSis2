@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 ########################################
 # Repositorio raíz - Reglas consolidadas
 ########################################
 
-=======
-# Evitar archivo reservado de Windows
-NUL
-nul
-NUL.*
-nul.*
->>>>>>> 85f12b9c768cddb3456017e2f5633c1d0ed1ae2d
 # Secretos en raíz
 .env
 .env.*
@@ -24,7 +16,6 @@ nul.*
 .DS_Store
 Thumbs.db
 
-<<<<<<< HEAD
 # Python/Django dentro de la carpeta del proyecto "luis"
 luis/**/__pycache__/
 luis/**/*.py[cod]
@@ -97,75 +88,3 @@ luis/Include/
 luis/Lib/
 luis/Scripts/
 luis/pyvenv.cfg
-=======
-# Archivos Python globales
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-*.pyd
-*.log
-
-# Distribución / empaquetado
-*.egg-info/
-dist/
-build/
-.eggs/
-downloads/
-sdist/
-var/
-wheels/
-share/python-wheels/
-.installed.cfg
-MANIFEST
-
-# PyInstaller
-*.manifest
-*.spec
-
-# Logs / coverage / tests cache
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
-
-# Traducciones
-*.mo
-*.pot
-
-# Django artefactos
-db.sqlite3
-db.sqlite3-journal
-media/
-staticfiles/
-local_settings.py
-
-# Variables de entorno / secretos
-.env
-.env.*
-!.env.example
-
-# Entornos virtuales (raíz o subcarpetas)
-.venv/
-venv/
-luis/venv/
-ENV/
-env/
-Include/
-Lib/
-Scripts/
-pyvenv.cfg
-
-# Proyecto luis específico
-luis/db.sqlite3
-luis/db.sqlite3-journal
->>>>>>> 85f12b9c768cddb3456017e2f5633c1d0ed1ae2d
