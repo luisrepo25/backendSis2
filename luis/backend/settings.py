@@ -1,6 +1,7 @@
 # backend/settings.py
 
 import os
+from corsheaders.defaults import default_headers
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
@@ -13,7 +14,14 @@ SECRET_KEY = os.getenv("SECRET_KEY", "dev-key")
 DEBUG = os.getenv("DEBUG", "1") in ["1", "True", "true"]
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
 CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "http://localhost:8000").split(",")
-CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000,http://localhost:5173").split(",")
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://tusitio.netlify.app",
+    "https://tuapp.vercel.app",
+]
+CORS_ALLOW_HEADERS = list(default_headers) + ["authorization", "content-type"]
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
 
 INSTALLED_APPS = [
     "django.contrib.admin","django.contrib.auth","django.contrib.contenttypes",
