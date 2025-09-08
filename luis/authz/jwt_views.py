@@ -1,3 +1,25 @@
+from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken, OutstandingToken
+@api_view(["POST"])
+@permission_classes([AllowAny])
+@extend_schema(
+    summary="Logout",
+    description="Blacklistea el refresh token para cerrar sesión en el backend.",
+    request=inline_serializer(
+        name="LogoutRequest",
+        fields={"refresh": drf_serializers.CharField()},
+    ),
+    responses={200: OpenApiResponse(description="Logout exitoso")},
+)
+def logout_view(request):
+    refresh_token = request.data.get("refresh")
+    if not refresh_token:
+        return Response({"detail": "Falta refresh"}, status=400)
+    try:
+        token = RefreshToken(refresh_token)
+        token.blacklist()
+        return Response({"detail": "Logout exitoso"}, status=200)
+    except Exception:
+        return Response({"detail": "Token inválido"}, status=400)
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
